@@ -1,3 +1,8 @@
+/*
+CREATE USER 'app_quranbot'@'localhost' IDENTIFIED BY 'password';
+GRANT INSERT, UPDATE, DELETE, SELECT ON quran_class.* TO 'app_quranbot'@'localhost' WITH GRANT OPTION;
+*/
+
 CREATE SCHEMA IF NOT EXISTS `quran_class`;
 # DROP DATABASE `quran_class`;
 
