@@ -1,6 +1,6 @@
 from telegram import Update
 from responses import Responses
-from bothelper import send_response;
+from bothelper import send_response
 
 def _process_ticks(text:str) -> str:
     green_ticks = text.count(Responses.EMOJI_TICK_GREEN)

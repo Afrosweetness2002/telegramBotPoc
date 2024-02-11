@@ -1,6 +1,6 @@
 from telegram import Update
 from responses import Responses
-from bothelper import send_response;
+from bothelper import send_response
 
 async def process_response(update: Update, token: str):    
     print(update.message)
