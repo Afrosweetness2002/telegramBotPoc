@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+
+  quranbot:
+    container_name: quran-bot
+    image: goateeddev/quranbot:1.0.0.0
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - 8282:80
+    restart: always
+    environment:
+      - TOKEN=${TOKEN}
+      - MYSQL_USERNAME=${MYSQL_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_PORT=${MYSQL_PORT}
+
+# Local
+# docker-compose -f .\docker-compose-Production.yml up -d
+# docker-compose -f .\docker-compose-Production.yml up -d --build
+# docker-compose -f .\docker-compose-Production.yml down --rmi local
+
+# Remote
+# docker build -t goateeddev/quranbot:1.0.0.0 .
+# docker push goateeddev/quranbot:1.0.0.0
+# docker-compose -f ~/../srv/quranbot/docker-compose.yml up -d
+# docker-compose -f ~/../srv/quranbot/docker-compose.yml down --rmi all

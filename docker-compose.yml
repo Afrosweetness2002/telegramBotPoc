@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  quranbot:
+    container_name: quranbot
+    depends_on:
+      - db
+    build:
+      dockerfile: ./Dockerfile
+    ports:
+      - 8081:80
+    restart: always
+    environment:
+      - TOKEN=${TOKEN}
+      - MYSQL_USERNAME=testuser
+      - MYSQL_PASSWORD=p@ssw0rd
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3316
+
+  db:
+    container_name: quranbot-db
+    image: mysql
+    restart: always
+    ports:
+      - 3316:3306
+    environment:
+      MYSQL_USER: testuser
+      MYSQL_PASSWORD: p@ssw0rd
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
+      MYSQL_ROOT_HOST: localhost
+    volumes:
+      - ../../docker/volumes/mysql:/var/lib/mysql
+      - ../../database/mysql/scripts/0 - init.sql:/docker-entrypoint-initdb.d/init.sql
+
+# Dev
+# docker-compose -f .\docker-compose.yml up -d
+# docker-compose -f .\docker-compose.yml up -d --build
+# docker-compose -f .\docker-compose.yml down --rmi local
