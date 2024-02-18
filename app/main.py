@@ -22,6 +22,7 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("ontime", cmdfactory.ontime_command))
     app.add_handler(CommandHandler("late", cmdfactory.late_command))
     app.add_handler(CommandHandler("submit", cmdfactory.submit_command))
+    app.add_handler(CommandHandler("correct", cmdfactory.correct_command))
 
     # Fallback (note: order matters, this should be added last)
     app.add_handler(MessageHandler(filters.TEXT, cmdfactory.no_command))

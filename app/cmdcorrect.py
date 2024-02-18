@@ -10,7 +10,7 @@ def _process_ticks(text:str) -> str:
     total_ticks = green_ticks + grey_ticks
     
     if total_ticks == 0:
-        return Responses.LESSON_SUBMISSION_PROMPT
+        return Responses.LESSON_SUBMISSION_PROMPT_FULL
 
     if total_ticks > 7:
         return Responses.LESSON_SUBMISSION_MAX
@@ -20,9 +20,6 @@ def _process_ticks(text:str) -> str:
 
     if grey_ticks == 7:
         return Responses.LESSON_SUBMISSION_BAD
-
-    if grey_ticks > 3:
-        return Responses.LESSON_SUBMISSION_MOST_BAD
 
     return Responses.LESSON_SUBMISSION.format(green_ticks, grey_ticks)
 

@@ -6,6 +6,7 @@ from responses import Responses
 import cmdontime;
 import cmdlate;
 import cmdsubmit;
+import cmdcorrect;
 
 TOKEN: Final = os.getenv("TOKEN")
 
@@ -38,3 +39,7 @@ async def late_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def submit_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     _print_details(update)
     await cmdsubmit.process_response(update, TOKEN)
+
+async def correct_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    _print_details(update)
+    await cmdcorrect.process_response(update, TOKEN)
