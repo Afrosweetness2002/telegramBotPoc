@@ -16,6 +16,21 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_HOST=${MYSQL_HOST}
       - MYSQL_PORT=${MYSQL_PORT}
+    networks:
+      tradeub_network:
+        priority: 1
+        ipv4_address: 172.22.0.2
+    extra_hosts:
+      - "serverhost:host-gateway"
+
+networks:
+  tradeub_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/24
+          gateway: 172.22.0.1
 
 # Local
 # docker-compose -f .\docker-compose-Production.yml up -d
