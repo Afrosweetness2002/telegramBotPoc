@@ -10,7 +10,7 @@ MYSQL_PORT: Final = os.getenv("MYSQL_PORT")
 
 # https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html
 # https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html
-def connect():
+def get(query: str):
     try:
         cnx = mysql.connector.connect(
             user=MYSQL_USERNAME,
@@ -21,19 +21,18 @@ def connect():
 
         with cnx.cursor() as cursor:
 
-            result = cursor.execute("SELECT * FROM role")
+            result = cursor.execute(query)
 
-            rows = cursor.fetchall()
+            all = cursor.fetchall()
+            
+            cnx.close()
 
-            for rows in rows:
-                print(rows)
+            return all
 
     except mysql.connector.Error as err:
       if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-        print("Invalid username or password.")
+        print("db error: Invalid username or password.")
       elif err.errno == errorcode.ER_BAD_DB_ERROR:
-        print("Database does not exist")
+        print("db error: Database does not exist")
       else:
         print(err)
-    else:
-      cnx.close()

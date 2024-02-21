@@ -7,6 +7,7 @@ import cmdontime;
 import cmdlate;
 import cmdsubmit;
 import cmdcorrect;
+import cmdlistusers;
 
 TOKEN: Final = os.getenv("TOKEN")
 
@@ -43,3 +44,7 @@ async def submit_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def correct_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     _print_details(update)
     await cmdcorrect.process_response(update, TOKEN)
+
+async def listusers_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    _print_details(update)
+    await cmdlistusers.process_response(update, TOKEN)
