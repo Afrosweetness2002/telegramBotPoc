@@ -1,13 +1,13 @@
 from typing import Final
-import os;
+import os
 from telegram import Update
 from telegram.ext import ContextTypes
 from responses import Responses
-import cmdontime;
-import cmdlate;
-import cmdsubmit;
-import cmdcorrect;
-import cmdlistusers;
+import cmdontime
+import cmdlate
+import cmdsubmit
+import cmdcorrect
+import cmdlistusers
 
 TOKEN: Final = os.getenv("TOKEN")
 

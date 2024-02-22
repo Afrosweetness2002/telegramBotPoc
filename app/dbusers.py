@@ -1,4 +1,7 @@
-import db;
+import db
+from user import User
 
-def get_users():
-    return db.get("SELECT * FROM user")
+def get_users() -> list[User]:
+    result = db.get("SELECT * FROM user")
+    users = [User(*x) for x in result]
+    return users

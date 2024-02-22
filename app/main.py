@@ -1,7 +1,7 @@
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 import os
 from dotenv import load_dotenv
-import cmdfactory;
+import cmdfactory
 
 # REQUIRED: Load the .env file
 load_dotenv()
